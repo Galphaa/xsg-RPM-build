@@ -1,1 +1,2 @@
-# xsg-RPM-build
+RPM building script 
+
