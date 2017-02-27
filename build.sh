@@ -25,5 +25,5 @@ check_result $? "Cant create TMP Dir"
 
 cd $WORKING_DIR
 git clone --recursive https://github.com/HariSekhon/nagios-plugins.git
-
-
+echo "$WORKING_DIR"
+pcho "$CURRENT_DIR"
