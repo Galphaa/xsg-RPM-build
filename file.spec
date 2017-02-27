@@ -5,7 +5,7 @@ summary:  sample
 License:  GPL
 URL:      none      
 Source0:   file.tar.gz     
-BuildRoot: ash/rpmbuild/%{name}-%{version}-%{release}-buildroot
+BuildRoot: lll/rpmbuild/%{name}-%{version}-%{release}-buildroot
 
 Prefix: %{_prefix}
 
