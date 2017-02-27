@@ -1,11 +1,11 @@
-Name: check_interface.pl
+Name: 		__NAME__
 Version:        __VERSION__
 Release:        __RELEASE__
 summary:  sample 
 License:  GPL
 URL:      none      
 Source0:   file.tar.gz     
-BuildRoot: /home/rpmbuild/%{name}-%{version}-%{release}-buildroot
+BuildRoot: ashmalaxa_rpmbuild/%{name}-%{version}-%{release}-buildroot
 
 Prefix: %{_prefix}
 
@@ -15,6 +15,7 @@ Prefix: %{_prefix}
 
 %prep
 %setup -n file
+:q
 
 %install
 rm -rf "$RPM_BUILD_ROOT"
@@ -24,4 +25,4 @@ cp -R * "$RPM_BUILD_ROOT/opt/file"
 /opt/file
 
 %clean 
-rm -rf $RPM_BUILD_ROOT
+r -rf $RPM_BUILD_ROOT
