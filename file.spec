@@ -1,7 +1,7 @@
 Name: 		__NAME__
 Version:        __VERSION__
 Release:        __RELEASE__
-summary:  sample 
+Summary:  sample 
 License:  GPL
 URL:      none      
 Source0:   file.tar.gz     
