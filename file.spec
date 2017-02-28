@@ -15,7 +15,7 @@ Prefix: %{_prefix}
 
 %prep
 %setup -n file
-:q
+
 
 %install
 rm -rf "$RPM_BUILD_ROOT"
