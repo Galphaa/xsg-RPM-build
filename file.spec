@@ -4,7 +4,7 @@ Release:        __RELEASE__
 Summary:  sample 
 License:  GPL
 URL:      none      
-Source0:   __FILE__.tar.gz     
+Source0:   %{name}-%{version}.tar.gz     
 BuildRoot: __PATH__/rpmbuild/%{name}-%{version}-%{release}-buildroot
 
 Prefix: %{_prefix}
@@ -14,7 +14,7 @@ Prefix: %{_prefix}
 
 
 %prep
-%setup -n __FILE__
+%setup -q -n %{name}-%{version}
 
 
 %install
