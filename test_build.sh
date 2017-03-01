@@ -45,7 +45,7 @@ mkdir rpmbuild
 cd rpmbuild
 mkdir {BUILD,RPMS,SOURCES,SPECS,SRPMS,tmp}
 cd ../
-mkdir $targ
+mkdir ${targ}-${version}
 ## copping target file from nagios plugin folder to separet dir named by scripty name 
 mv "nagios-plugins/${targ}" "${targ}/"
 check_result $? "Cant coppy nagios plagin to target file"
@@ -66,8 +66,8 @@ echo "Setting versions information in SPEC files"
 sed -i -- "s/__NAME__/${targ}/g" ${WORKING_DIR}/rpmbuild/SPECS/${targ}.spec
 sed -i -- "s/__VERSION__/${version}/g" ${WORKING_DIR}/rpmbuild/SPECS/${targ}.spec
 sed -i -- "s/__RELEASE__/${release}/g" ${WORKING_DIR}/rpmbuild/SPECS/${targ}.spec
-sed -i -- "s/__PATH__/${WORKING_DIR}/g" ${WORKING_DIR}/rpmbuild/SPECS/${targ}.spec
-
+sed -i -- "s|__PATH__|${WORKING_DIR}|g" ${WORKING_DIR}/rpmbuild/SPECS/${targ}.spec
+check_result $? "problem with renaming default spec files options"
 
 build_signed_rpm $1 $2
 mv ${WORKING_DIR}/rpmbuild/RPMS/x86_64/${targ}-${version}-${release}.x86_64.rpm ${CURRENT_DIR}/
