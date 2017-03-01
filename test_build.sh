@@ -1,8 +1,4 @@
 #!/usr/bin/env bash
-
-echo "input target script name:\c" 
-read targ
-
 # Prepares sources for RPM installation
 
 PATH=$PATH:/usr/local/bin
@@ -19,7 +15,7 @@ check_result() {
         exit $1
     fi
 }
-
+targ="$3"
 version=`date +%Y%m%d`
 release=`date +%H%M%S`
 
@@ -48,9 +44,9 @@ mkdir $targ
 cp nagios-plugins/$targ $WORKING_DIR/$targ/
 ## copping target file from nagios plugin folder to separet dir named by scripty name 
 
-tar zcvf ${targ}.tar.gz $targ
+tar zcvf ${targ}-${version}.tar.gz $targ
 
-mv ${targ}.tar.gz rpmbuild/SOURCES/
+mv ${targ}-${version}.tar.gz rpmbuild/SOURCES/
 
 wget https://raw.githubusercontent.com/Galphaa/xsg-RPM-build/master/file.spec > /dev/null 2>&1 ## copping spec files from my repo
 
@@ -63,9 +59,7 @@ echo "Setting versions information in SPEC files"
 sed -i -- "s/__NAME__/${targ}/g" ${WORKING_DIR}/rpmbuild/SPECS/${targ}.spec
 sed -i -- "s/__VERSION__/${version}/g" ${WORKING_DIR}/rpmbuild/SPECS/${targ}.spec
 sed -i -- "s/__RELEASE__/${release}/g" ${WORKING_DIR}/rpmbuild/SPECS/${targ}.spec
-sed -i -- "s/__FILE__/${targ}/g" ${WORKING_DIR}/rpmbuild/SPECS/${targ}.spec
 sed -i -- "s/__PATH__/${wor_dir}/g" ${WORKING_DIR}/rpmbuild/SPECS/${targ}.spec
-sed -i -- "s/__FILE__/${targ}/g" ${WORKING_DIR}/rpmbuild/SPECS/${targ}.spec
 
 
 build_signed_rpm $1 $2
