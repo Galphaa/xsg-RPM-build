@@ -93,9 +93,10 @@ cd -
 
 ## Begining RPM building 
 build_signed_rpm $1 $2
+check_result $? "Problem with prmbuild tool. (last section of building of RPM package)"
 
 mv ${WORKING_DIR}/rpmbuild/RPMS/x86_64/${targ}-${version}-${release}.x86_64.rpm ${CURRENT_DIR}/build/
-check_result $? "Problem with prmbuild tool. (last section of building of RPM package)"
+check_result $? "Problem with moving RPM package to script file location/build directory)"
 cd - 
 rm .rpmmacros 
 mv before_.rpmmacros .rpmmacros
