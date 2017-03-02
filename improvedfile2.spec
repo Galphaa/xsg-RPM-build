@@ -1,11 +1,11 @@
-Name: 		check_linux_interface.pl
-Version:        20170301
-Release:        135328
+Name: 		__NAME__
+Version:        __VERSION__
+Release:        __RELEASE__
 Summary:  sample 
 License:  GPL
 URL:      none      
 Source0:   %{name}-%{version}.tar.gz     
-BuildRoot: /tmp/tmp.w71VL5TouZ/rpmbuild/%{name}-%{version}-%{release}-buildroot
+BuildRoot: __PATH__/rpmbuild/%{name}-%{version}-%{release}-buildroot
 
 Prefix: %{_prefix}
 
