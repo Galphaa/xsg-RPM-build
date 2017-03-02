@@ -4,7 +4,7 @@ Using guide
 
 $1 = target_name.spec 
 
-$2 = archicture_(x86_64) 
+$2 = architecture_(x86_64) 
 
 $3 = target_name
 
