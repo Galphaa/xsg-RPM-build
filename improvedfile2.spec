@@ -5,8 +5,7 @@ Summary:  sample
 License:  GPL
 URL:      none      
 Source0:   %{name}-%{version}.tar.gz     
-BuildRoot: /tmp/tmp.w71VL5TouZ/rpmbuild/%{name}-%{version}-%{release}
-#-buildroot
+BuildRoot: /tmp/tmp.w71VL5TouZ/rpmbuild/%{name}-%{version}-%{release}-buildroot
 
 Prefix: %{_prefix}
 
@@ -15,7 +14,8 @@ Prefix: %{_prefix}
 
 
 %prep
-%setup -q  -n %{name}
+
+%setup -q -n %{name}-%{version}
 
 
 %install

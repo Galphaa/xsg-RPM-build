@@ -55,7 +55,8 @@ tar zcvf ${targ}-${version}.tar.gz $targ
 
 mv ${targ}-${version}.tar.gz rpmbuild/SOURCES/
 
-wget https://raw.githubusercontent.com/Galphaa/xsg-RPM-build/master/file.spec > /dev/null 2>&1 ## copping spec files from my repo
+## Copping spec files from my repo
+wget https://raw.githubusercontent.com/Galphaa/xsg-RPM-build/master/file.spec > /dev/null 2>&1
 
 mv file.spec ${targ}.spec
 
