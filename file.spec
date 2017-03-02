@@ -23,7 +23,7 @@ rm -rf "$RPM_BUILD_ROOT"
 mkdir -p "$RPM_BUILD_ROOT/opt/%{name}"
 cp -R * "$RPM_BUILD_ROOT/opt/%{name}"
 %files
-/opt/file
+/opt/%{name}
 
 %clean 
 rm -rf "$RPM_BUILD_ROOT"
