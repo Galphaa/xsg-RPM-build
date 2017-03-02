@@ -103,4 +103,4 @@ mv before_.rpmmacros .rpmmacros
 
 
 
-echo "Good job men :)))"
+echo "Good job :)))"
