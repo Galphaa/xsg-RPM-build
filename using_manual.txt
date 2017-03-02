@@ -1,5 +1,0 @@
-$1 = target_name.spec 
-
-$2 = archicture_(x86_64) 
-
-$3 = target_name 

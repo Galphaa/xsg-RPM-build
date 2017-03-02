@@ -8,4 +8,6 @@ $2 = archicture_(x86_64)
 
 $3 = target_name
 
-example bash test_build2.sh check_linux_interface.pl.spec x86_64 check_linux_interface.pl
+example bash build.sh check_linux_interface.pl.spec x86_64 check_linux_interface.pl
+
+for debugging use bash -x 
