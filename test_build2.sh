@@ -19,8 +19,8 @@ check_result() {
 build_signed_rpm() {
     SPEC_FILE="$1"
     TARGET="$2"
-    rpmbuild -bb -v --sign --clean  --target ${TARGET} ${WORKING_DIR}/rpmbuild/SPECS/${SPEC_FILE}
-    #rpmbuild -bb -v ${WORKING_DIR}/rpmbuild/SPECS/${SPEC_FILE}
+    #rpmbuild -bb -v --sign --clean  --target ${TARGET} ${WORKING_DIR}/rpmbuild/SPECS/${SPEC_FILE}
+    rpmbuild -bb -v ${WORKING_DIR}/rpmbuild/SPECS/${SPEC_FILE}
     #expect -exact "Enter pass phrase: "
     #send -- "blank\r"
     #expect eof
@@ -75,6 +75,8 @@ check_result $? "Problem with renameing spec file to "$targ""
 mv ${targ}.spec rpmbuild/SPECS/
 check_result $? "Can't moving $targ Spec to rpm/SPEC/ "
 
+
+
 echo "Setting versions information in SPEC files"
 
 sed -i -- "s/__NAME__/${targ}/g" ${WORKING_DIR}/rpmbuild/SPECS/${targ}.spec
@@ -82,7 +84,23 @@ sed -i -- "s/__VERSION__/${version}/g" ${WORKING_DIR}/rpmbuild/SPECS/${targ}.spe
 sed -i -- "s/__RELEASE__/${release}/g" ${WORKING_DIR}/rpmbuild/SPECS/${targ}.spec
 sed -i -- "s|__PATH__|${WORKING_DIR}|g" ${WORKING_DIR}/rpmbuild/SPECS/${targ}.spec
 
+cd ~
+wget https://raw.githubusercontent.com/Galphaa/xsg-RPM-build/master/beta_.rpmmacros
+cp .rpmmacros before_.rpmmacros
+mv beta_.rpmmacros .rpmmacros
+sed -i -- "s|__PATH__|${WORKING_DIR}|g" .rpmmacros
+cd -
 
+## Begining RPM building 
 build_signed_rpm $1 $2
-mv ${WORKING_DIR}/rpmbuild/RPMS/x86_64/${targ}-${version}-${release}.x86_64.rpm ${CURRENT_DIR}/
+
+mv ${WORKING_DIR}/rpmbuild/RPMS/x86_64/${targ}-${version}-${release}.x86_64.rpm ${CURRENT_DIR}/build/
 check_result $? "Problem with prmbuild tool. (last section of building of RPM package)"
+cd - 
+rm .rpmmacros 
+mv before_.rpmmacros .rpmmacros
+
+
+
+
+echo "Good job man :)))"
