@@ -5,7 +5,7 @@ Summary:  sample
 License:  GPL
 URL:      none
 Source0:   %{name}-%{version}.tar.gz
-BuildRoot: __PATH__/rpmbuild/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+BuildRoot: %_tmppath/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 
 %description
@@ -22,3 +22,10 @@ install -d  %{buildroot}
 
 %clean
 rm -rf "$RPM_BUILD_ROOT"
+
+%files
+
+
+%changelog
+* Fri Mar 03 2017 Konstantine Karosanidze <konstantine.karosanidze@gmail.com>
+- Initial Build
