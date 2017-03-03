@@ -20,12 +20,14 @@ BuildRoot: %_tmppath/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 install -d  %{buildroot}
 %{__cp} -ad ./* %{buildroot}
 
-%clean
-rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root)
 __PATH__
+
+%clean
+rm -rf %{buildroot}
+
 
 %changelog
 * Fri Mar 03 2017 Konstantine Karosanidze <konstantine.karosanidze@gmail.com>
