@@ -12,7 +12,6 @@ BuildRoot: %_tmppath/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 
 %prep
-
 %setup -q -n %{name}-%{version}
 
 
