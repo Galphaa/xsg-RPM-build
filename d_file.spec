@@ -24,7 +24,8 @@ install -d  %{buildroot}
 rm -rf "$RPM_BUILD_ROOT"
 
 %files
-
+%defattr(-,root,root)
+/usr/lib64/nagios-plugins/__NAME__
 
 %changelog
 * Fri Mar 03 2017 Konstantine Karosanidze <konstantine.karosanidze@gmail.com>
