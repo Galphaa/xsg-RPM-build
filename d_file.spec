@@ -21,7 +21,7 @@ install -d  %{buildroot}
 %{__cp} -ad ./* %{buildroot}
 
 %clean
-rm -rf "$RPM_BUILD_ROOT"
+rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root)
