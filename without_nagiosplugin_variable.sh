@@ -30,7 +30,7 @@ build_signed_rpm() {
 
 ## NEED FILE NAME
 
-"$nagios-plugins"=nagios
+nagios-plugins="nagios-plugins"
 
 targ="$3"
 version=`date +%Y%m%d`
