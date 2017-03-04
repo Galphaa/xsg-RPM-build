@@ -1,4 +1,4 @@
 %_topdir   %(echo __PATH__)/rpmbuild
 %_tmppath  %{_topdir}/tmp
 %_signature         %gpg
-%_gpg_name          root <gkeratishvili@gmail.com>
+%_gpg_name          giorgi <gkeratishvili@gmail.com>
