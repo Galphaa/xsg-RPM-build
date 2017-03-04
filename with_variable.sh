@@ -97,9 +97,9 @@ check_result $? "Unable Copy RPM Config"
 
 
 mkdir -p usr/lib64/nagios/plugins/
-mkdir -p /usr/lib64/nagios/plugins/
+#mkdir -p /usr/lib64/nagios/plugins/
 cp ""$nagios-plugins"/${targ}" usr/lib64/nagios/plugins/
-cp ""$nagios-plugins"/${targ}" /usr/lib64/nagios/plugins/
+#cp ""$nagios-plugins"/${targ}" /usr/lib64/nagios/plugins/
 cp -R usr $WORKING_DIR/${targ}-${version}
 cp -R etc $WORKING_DIR/${targ}-${version}
 
