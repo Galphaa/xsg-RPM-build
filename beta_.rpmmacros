@@ -1,2 +1,3 @@
 %_topdir   %(echo __PATH__)/rpmbuild
 %_tmppath  %{_topdir}/tmp
+%_gpg_name John Doe <jdoe@foo.com> 
