@@ -9,7 +9,7 @@ BuildRoot: %_tmppath/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 
 %description
-
+kai ragac 
 
 %prep
 %setup -q -n %{name}-%{version}
@@ -25,9 +25,6 @@ rm -rf %{buildroot}
 %files
 %defattr(-,root,root)
 __PATH__
-
-
-
 
 %changelog
 * Fri Mar 03 2017 Konstantine Karosanidze <konstantine.karosanidze@gmail.com>
