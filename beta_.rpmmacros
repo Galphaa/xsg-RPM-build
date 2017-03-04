@@ -2,5 +2,5 @@
 %_tmppath  %{_topdir}/tmp
 %_signature gpg
 %_gpg_path /etc/rpm/.gpg
-%_gpg_name John Doe <jdoe at foo.com> <jdoe at foo.com>
+%_gpg_name root
 %__gpg /usr/bin/gpg
