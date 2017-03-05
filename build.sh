@@ -94,14 +94,14 @@ mkdir -p /usr/lib64/nagios/plugins/
 cp  ${WORKING_DIR}/nagios-plugins/${targ} usr/lib64/nagios/plugins/
 cp ${WORKING_DIR}/nagios-plugins/${targ} /usr/lib64/nagios/plugins/
 cp -R usr $WORKING_DIR/${targ}-${version}
-cp -R etc $WORKING_DIR/${targ}-${version}
+#cp -R etc $WORKING_DIR/${targ}-${version}
 
-cd /usr/lib64/nagios/plugins/"${targ}-$version"
-chmod -x  "${targ}"
+cd /usr/lib64/nagios/plugins/
+chmod -x  ${targ}
 cd -
 
-cd usr/lib64/nagios/plugins/"${targ}-$version"
-chmod -x  "${targ}"
+cd usr/lib64/nagios/plugins/
+chmod -x  ${targ}
 cd -
 
 
@@ -138,9 +138,9 @@ sed -i -- "s|__PATH__|"/usr/lib64/nagios/plugins/${targ}"|g" ${WORKING_DIR}/rpmb
 
 cd ~
 
-wget https://raw.githubusercontent.com/Galphaa/xsg-RPM-build/master/beta_.rpmmacros
+wget https://raw.githubusercontent.com/Galphaa/xsg-RPM-build/master/_.rpmmacros
 cp .rpmmacros before_.rpmmacros
-mv beta_.rpmmacros .rpmmacros
+mv _.rpmmacros .rpmmacros
 sed -i -- "s|__PATH__|${WORKING_DIR}|g" .rpmmacros
 
 cd -
@@ -158,12 +158,10 @@ mv before_.rpmmacros .rpmmacros
 
 ## removing garbage and preprearing for new sesion 
 
-rm -rf $CURRENT_DIR/usr/*
 rm -f  $CURRENT_DIR/usr/lib64/nagios/plugins/*
 rm -f  $CURRENT_DIR/${targ}.spec
 rm -f  $CURRENT_DIR/rpmbuild/SPECS/*
 rm -f  $CURRENT_DIR/rpmbuild/SOURCES/*
-
 
 echo "Mission Accomplished"
 
