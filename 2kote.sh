@@ -69,7 +69,7 @@ cd $CURRENT_DIR
 
 #git clone --recursive https://github.com/HariSekhon/nagios-plugins.git > /dev/null 2>&1
 
-check_result $? "Can't cloning from git repo"
+#check_result $? "Can't cloning from git repo"
 
 ## copping spec files from my repo
 wget https://raw.githubusercontent.com/Galphaa/xsg-RPM-build/master/d_file.spec > /dev/null 2>&1
@@ -85,20 +85,18 @@ cp ${targ}.spec "${WORKING_DIR}"/rpmbuild/SPECS/
 check_result $? "Can't moving $targ Spec to rpm/SPEC/ "
 
 
-cp ${CURRENT_DIR}/${targ}.spec ${CURRENT_DIR}/rpmbuild/SPECS/
+cp {targ}.spec ${CURRENT_DIR}/rpmbuild/SPECS/
 check_result $? "Unable Copy RPM Config"
-
-
-
-
 
 rm -rf usr/
 rm -rf /usr/lib64/nagios/plugins/
 
 mkdir -p usr/lib64/nagios/plugins/
 mkdir -p /usr/lib64/nagios/plugins/
-cp "nagios-plugins/${targ}" usr/lib64/nagios/plugins/
-cp "nagios-plugins/${targ}" /usr/lib64/nagios/plugins/
+cp  ${WORKING_DIR}/nagios-plugins/${targ} usr/lib64/nagios/plugins/
+cp ${WORKING_DIR}/nagios-plugins/${targ} /usr/lib64/nagios/plugins/
+cp -R usr $WORKING_DIR/${targ}-${version}
+cp -R etc $WORKING_DIR/${targ}-${version}
 
 cd /usr/lib64/nagios/plugins/"${targ}-$version"
 chmod -x  "${targ}"
@@ -107,9 +105,6 @@ cd -
 cd usr/lib64/nagios/plugins/"${targ}-$version"
 chmod -x  "${targ}"
 cd -
-
-cp -R usr $WORKING_DIR/${targ}-${version}
-cp -R etc $WORKING_DIR/${targ}-${version}
 
 
 
@@ -162,6 +157,8 @@ cd -
 rm .rpmmacros
 mv before_.rpmmacros .rpmmacros
 
+rm -f $CURRENT_DIR/rpmbuild/SPECS/*
+rm -f $CURRENT_DIR/rpmbuild/SOURCES/*
 
 
 echo "Good job :)))"
