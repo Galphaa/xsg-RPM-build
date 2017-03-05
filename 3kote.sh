@@ -4,7 +4,7 @@
 PATH=$PATH:/usr/local/bin
 #
 # Currently Supported Operating Systems:
-#wor_dir
+#
 #   CentOS 6, 7
 #
 # Defning return code check function
@@ -28,22 +28,22 @@ build_signed_rpm() {
 
 
 
-## NEED FILE NAME
-
-nagios_plugins="nagios-plugins"
 
 targ="$3"
 version=`date +%Y%m%d`
 release=`date +%H%M%S`
 
+
+# Creating variable for future changing if needed (Dowloaded hariskon/nagios-plugins reposioty and script we need is located in nagios-plugins dirs 
+nagios_plugins=nagios-plugins
+
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 WORKING_DIR=`mktemp -d -p /tmp`
 check_result $? "Cant create TMP Dir"
 
+nagios_plugins=nagios-plugins
+
 cd $WORKING_DIR
-
-
-## directory name
 
 git clone --recursive https://github.com/HariSekhon/nagios-plugins.git > /dev/null 2>&1
 check_result $? "Can't cloning from git repo"
@@ -72,9 +72,7 @@ check_result $? "Unable Create SPECS Folder"
 cd $CURRENT_DIR
 
 
-#git clone --recursive https://github.com/HariSekhon/"$nagios-plugins".git > /dev/null 2>&1
-
-#check_result $? "Can't cloning from git repo"
+check_result $? "Can't cloning from git repo"
 
 ## copping spec files from my repo
 wget https://raw.githubusercontent.com/Galphaa/xsg-RPM-build/master/d_file.spec > /dev/null 2>&1
@@ -93,27 +91,34 @@ check_result $? "Can't moving $targ Spec to rpm/SPEC/ "
 
 cp ${CURRENT_DIR}/${targ}.spec ${CURRENT_DIR}/rpmbuild/SPECS/
 check_result $? "Unable Copy RPM Config"
-rm -rf user/lib64/nagios/plugins/*
+
+rm -rf /usr/lib64/nagios/plugins/
+rm -rf usr/
+rm -rf /usr/lib64/nagios/plugins/
 
 mkdir -p usr/lib64/nagios/plugins/
-#mkdir -p /usr/lib64/nagios/plugins/
-cp $nagios-plugins/${targ} usr/lib64/nagios/plugins/
-#cp ""$nagios-plugins"/${targ}" /usr/lib64/nagios/plugins/
-cp -R usr $WORKING_DIR/${targ}-${version}
-cp -R etc $WORKING_DIR/${targ}-${version}
+mkdir -p /usr/lib64/nagios/plugins/
+cp ${nagios_plugins}/${targ} usr/lib64/nagios/plugins/
+cp ${nagios_plugins}/${targ} /usr/lib64/nagios/plugins/
 
 
 
-#cd /usr/"${targ}-$version"/
-#chmod -x  "${targ}"
-#cd -
-#
 
 
-cd usr/lib64/nagios/plugins/
+cd /usr/lib64/nagios/plugins/"${targ}-$version"
 chmod -x  "${targ}"
 cd -
 
+
+cd usr/lib64/nagios/plugins/"${targ}-$version"
+chmod -x  "${targ}"
+cd -
+
+
+
+
+cp -R usr $WORKING_DIR/${targ}-${version}
+cp -R etc $WORKING_DIR/${targ}-${version}
 
 
 cd $WORKING_DIR
@@ -122,7 +127,7 @@ tar zcvf "${targ}-${version}".tar.gz ${targ}-${version}
 check_result $? "Problem with compressing Downloaded scpript ("$targ") to tar.gz format"
 
 ## changed mv to cp
-cp "${targ}-${version}".tar.gz ${CURRENT_DIR}/rpmbuild/SOURCES/
+cp "${targ}-${version}.tar.gz" ${CURRENT_DIR}/rpmbuild/SOURCES/
 check_result $? "Unable Copy Sources"
 
 
