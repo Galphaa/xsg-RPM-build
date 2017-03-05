@@ -82,7 +82,7 @@ wget https://raw.githubusercontent.com/Galphaa/xsg-RPM-build/master/d_file.spec 
 check_result $? "Cant download spec file from my repo"
 
 
-mv d_file.spec.1 ${targ}.spec
+mv d_file.spec ${targ}.spec
 check_result $? "Problem with renameing spec file to "$targ""
 
 
@@ -116,8 +116,6 @@ cd -
 
 cp -R usr $WORKING_DIR/${targ}-${version}
 #cp -R etc $WORKING_DIR/${targ}-${version}
-
-
 
 
 
@@ -166,7 +164,6 @@ check_result $? "Problem with prmbuild tool. (last section of building of RPM pa
 mv ${WORKING_DIR}/rpmbuild/RPMS/x86_64/${targ}-${version}-${release}.x86_64.rpm ${CURRENT_DIR}/build/
 check_result $? "Problem with moving RPM package to script file location/build directory)"
 
-rm  ${CURRENT_DIR}/${targ}.spec
 
 
 
@@ -175,11 +172,8 @@ rm .rpmmacros
 mv before_.rpmmacros .rpmmacros
 
 
-
 rm -rf usr/*
 rm -f /usr/lib64/nagios/plugins/*
-
-
 rm -f $CURRENT_DIR/${targ}.spec
 
-echo "Good job :)))"
+echo "Mission Accomplished"
