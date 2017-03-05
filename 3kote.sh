@@ -148,32 +148,42 @@ sed -i -- "s/__RELEASE__/${release}/g" ${WORKING_DIR}/rpmbuild/SPECS/${targ}.spe
 sed -i -- "s/__NAME__/${targ}/g" ${WORKING_DIR}/rpmbuild/SPECS/${targ}.spec
 sed -i -- "s|__PATH__|"/usr/lib64/nagios/plugins/${targ}"|g" ${WORKING_DIR}/rpmbuild/SPECS/${targ}.spec
 
+
+
+## changing macro to our custom rpmmacros 
 cd ~
 
 wget https://raw.githubusercontent.com/Galphaa/xsg-RPM-build/master/beta_.rpmmacros
 cp .rpmmacros before_.rpmmacros
+
 mv beta_.rpmmacros .rpmmacros
 sed -i -- "s|__PATH__|${WORKING_DIR}|g" .rpmmacros
-
 cd -
 
 ## Begining RPM building
+
 build_signed_rpm $1 $2
 check_result $? "Problem with prmbuild tool. (last section of building of RPM package)"
 
+##moving  RPM build file to script location
+ 
 mv ${WORKING_DIR}/rpmbuild/RPMS/x86_64/${targ}-${version}-${release}.x86_64.rpm ${CURRENT_DIR}/build/
 check_result $? "Problem with moving RPM package to script file location/build directory)"
 
 
-
+#returning old macro 
 
 cd -
 rm .rpmmacros
 mv before_.rpmmacros .rpmmacros
 
+## removing garbage and preprearing for new sesion
 
-rm -rf usr/*
-rm -f /usr/lib64/nagios/plugins/*
+rm -rf $CURRENT_DIR/usr/*
+rm -rf $CURRENT_DIR/usr/lib64/nagios/plugins/*
 rm -f $CURRENT_DIR/${targ}.spec
+rm -f $CURRENT_DIR/rpmbuild/SPECS/*
+rm -f $CURRENT_DIR/rpmbuild/SOURCES/*
+
 
 echo "Mission Accomplished"
