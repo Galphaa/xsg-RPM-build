@@ -85,9 +85,12 @@ cp ${targ}.spec "${WORKING_DIR}"/rpmbuild/SPECS/
 check_result $? "Can't moving $targ Spec to rpm/SPEC/ "
 
 
-
 cp ${CURRENT_DIR}/${targ}.spec ${CURRENT_DIR}/rpmbuild/SPECS/
 check_result $? "Unable Copy RPM Config"
+
+
+
+
 
 rm -rf usr/
 rm -rf /usr/lib64/nagios/plugins/
@@ -96,20 +99,18 @@ mkdir -p usr/lib64/nagios/plugins/
 mkdir -p /usr/lib64/nagios/plugins/
 cp "nagios-plugins/${targ}" usr/lib64/nagios/plugins/
 cp "nagios-plugins/${targ}" /usr/lib64/nagios/plugins/
+
+cd /usr/lib64/nagios/plugins/"${targ}-$version"
+chmod -x  "${targ}"
+cd -
+
+cd usr/lib64/nagios/plugins/"${targ}-$version"
+chmod -x  "${targ}"
+cd -
+
 cp -R usr $WORKING_DIR/${targ}-${version}
 cp -R etc $WORKING_DIR/${targ}-${version}
 
-
-
-cd /usr/"${targ}-$version"/
-chmod -x  "${targ}"
-cd -
-
-
-
-cd usr/"${targ}-$version"/
-chmod -x  "${targ}"
-cd -
 
 
 

@@ -92,6 +92,9 @@ check_result $? "Can't moving $targ Spec to rpm/SPEC/ "
 cp ${CURRENT_DIR}/${targ}.spec ${CURRENT_DIR}/rpmbuild/SPECS/
 check_result $? "Unable Copy RPM Config"
 
+
+
+
 rm -rf /usr/lib64/nagios/plugins/
 rm -rf usr/
 rm -rf /usr/lib64/nagios/plugins/
@@ -100,8 +103,6 @@ mkdir -p usr/lib64/nagios/plugins/
 mkdir -p /usr/lib64/nagios/plugins/
 cp ${nagios_plugins}/${targ} usr/lib64/nagios/plugins/
 cp ${nagios_plugins}/${targ} /usr/lib64/nagios/plugins/
-
-
 
 
 
@@ -115,10 +116,11 @@ chmod -x  "${targ}"
 cd -
 
 
-
-
 cp -R usr $WORKING_DIR/${targ}-${version}
 cp -R etc $WORKING_DIR/${targ}-${version}
+
+
+
 
 
 cd $WORKING_DIR
@@ -165,6 +167,11 @@ check_result $? "Problem with prmbuild tool. (last section of building of RPM pa
 
 mv ${WORKING_DIR}/rpmbuild/RPMS/x86_64/${targ}-${version}-${release}.x86_64.rpm ${CURRENT_DIR}/build/
 check_result $? "Problem with moving RPM package to script file location/build directory)"
+
+rm  ${CURRENT_DIR}/${targ}.spec
+
+
+
 cd -
 rm .rpmmacros
 mv before_.rpmmacros .rpmmacros
