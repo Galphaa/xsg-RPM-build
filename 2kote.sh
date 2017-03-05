@@ -85,7 +85,7 @@ cp ${targ}.spec "${WORKING_DIR}"/rpmbuild/SPECS/
 check_result $? "Can't moving $targ Spec to rpm/SPEC/ "
 
 
-cp {targ}.spec ${CURRENT_DIR}/rpmbuild/SPECS/
+cp ${targ}.spec ${CURRENT_DIR}/rpmbuild/SPECS/
 check_result $? "Unable Copy RPM Config"
 
 rm -rf usr/

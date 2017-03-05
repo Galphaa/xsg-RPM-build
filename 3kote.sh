@@ -96,9 +96,6 @@ cp ${targ}.spec ${CURRENT_DIR}/rpmbuild/SPECS/
 check_result $? "Unable Copy RPM Config"
 
 
-#rm  /usr/lib64/nagios/plugins/*
-#rm  usr/*
-#rm  /usr/lib64/nagios/plugins/*
 
 mkdir -p usr/lib64/nagios/plugins/
 mkdir -p /usr/lib64/nagios/plugins/
@@ -140,7 +137,7 @@ check_result $? "Unable Copy RPM Config"
 
 cd $CURRENT_DIR/rpmbuild
 
-mv SOURCES/"${targ}-${version}".tar.gz "${WORKING_DIR}"/rpmbuild/SOURCES/
+cp SOURCES/"${targ}-${version}".tar.gz "${WORKING_DIR}"/rpmbuild/SOURCES/
 check_result $? "Problem with moving"
 
 
@@ -178,5 +175,11 @@ rm .rpmmacros
 mv before_.rpmmacros .rpmmacros
 
 
+
+rm -rf usr/*
+rm -f /usr/lib64/nagios/plugins/*
+
+
+rm -f $CURRENT_DIR/${targ}.spec
 
 echo "Good job :)))"
