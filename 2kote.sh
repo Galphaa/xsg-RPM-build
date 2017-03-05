@@ -72,11 +72,11 @@ cd $CURRENT_DIR
 #check_result $? "Can't cloning from git repo"
 
 ## copping spec files from my repo
-wget https://raw.githubusercontent.com/Galphaa/xsg-RPM-build/master/d_file.spec > /dev/null 2>&1
+wget https://raw.githubusercontent.com/Galphaa/xsg-RPM-build/master/file.spec > /dev/null 2>&1
 check_result $? "Cant download spec file from my repo"
 
 
-mv d_file.spec ${targ}.spec
+mv file.spec ${targ}.spec
 check_result $? "Problem with renameing spec file to "$targ""
 
 
@@ -88,8 +88,6 @@ check_result $? "Can't moving $targ Spec to rpm/SPEC/ "
 cp ${targ}.spec ${CURRENT_DIR}/rpmbuild/SPECS/
 check_result $? "Unable Copy RPM Config"
 
-rm -rf usr/
-rm -rf /usr/lib64/nagios/plugins/
 
 mkdir -p usr/lib64/nagios/plugins/
 mkdir -p /usr/lib64/nagios/plugins/
@@ -157,8 +155,15 @@ cd -
 rm .rpmmacros
 mv before_.rpmmacros .rpmmacros
 
-rm -f $CURRENT_DIR/rpmbuild/SPECS/*
-rm -f $CURRENT_DIR/rpmbuild/SOURCES/*
+
+## removing garbage and preprearing for new sesion 
+
+rm -rf $CURRENT_DIR/usr/*
+rm -f  $CURRENT_DIR/usr/lib64/nagios/plugins/*
+rm -f  $CURRENT_DIR/${targ}.spec
+rm -f  $CURRENT_DIR/rpmbuild/SPECS/*
+rm -f  $CURRENT_DIR/rpmbuild/SOURCES/*
 
 
-echo "Good job :)))"
+echo "Mission Accomplished"
+

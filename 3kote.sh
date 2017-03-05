@@ -78,11 +78,11 @@ cd $CURRENT_DIR
 
 
 ## copping spec files from my repo
-wget https://raw.githubusercontent.com/Galphaa/xsg-RPM-build/master/d_file.spec > /dev/null 2>&1
+wget https://raw.githubusercontent.com/Galphaa/xsg-RPM-build/master/file.spec > /dev/null 2>&1
 check_result $? "Cant download spec file from my repo"
 
 
-mv d_file.spec ${targ}.spec
+mv file.spec ${targ}.spec
 check_result $? "Problem with renameing spec file to "$targ""
 
 
