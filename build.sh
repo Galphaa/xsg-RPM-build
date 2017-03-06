@@ -27,7 +27,7 @@ build_signed_rpm() {
 }
 
 
-
+## Giveing name to third  positional parameters name of target file we want to be executed  $3 
 
 targ="$3"
 version=`date +%Y%m%d`
@@ -90,18 +90,26 @@ check_result $? "Unable Copy RPM Config"
 
 
 mkdir -p usr/lib64/nagios/plugins/
+check_result $? "Cant creat usr/lib64/nagios/plugins/"
+
 mkdir -p /usr/lib64/nagios/plugins/
+check_result $? "Can't creat  /usr/lib64/nagios/plugins/"
 cp  ${WORKING_DIR}/nagios-plugins/${targ} usr/lib64/nagios/plugins/
+check_result $? "Can't coppy ${targ} to usr/lib64/nagios/plugins/"
 cp ${WORKING_DIR}/nagios-plugins/${targ} /usr/lib64/nagios/plugins/
+check_result $? "Cat't coppy  ${targ} to /usr/lib64/nagios/plugins/"
 cp -R usr $WORKING_DIR/${targ}-${version}
+check_result $? "Can't coppy usr/ to working dir"
 #cp -R etc $WORKING_DIR/${targ}-${version}
 
 cd /usr/lib64/nagios/plugins/
 chmod -x  ${targ}
+check_result $? "Can't give execution permision in /usr/lib64/nagios/plugins/"
 cd -
 
 cd usr/lib64/nagios/plugins/
 chmod -x  ${targ}
+check_result $? "Can't give execution permision in usr/lib64/nagios/plugins/"
 cd -
 
 
@@ -141,6 +149,7 @@ cd ~
 wget https://raw.githubusercontent.com/Galphaa/xsg-RPM-build/master/_.rpmmacros
 cp .rpmmacros before_.rpmmacros
 mv _.rpmmacros .rpmmacros
+check_result $? "Problem with renameing Downloaded macro form git "
 sed -i -- "s|__PATH__|${WORKING_DIR}|g" .rpmmacros
 
 cd -
