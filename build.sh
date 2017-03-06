@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+!/usr/bin/env bash
 # Prepares sources for RPM installation
 
 PATH=$PATH:/usr/local/bin
