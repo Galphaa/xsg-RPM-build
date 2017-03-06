@@ -158,7 +158,7 @@ cd -
 build_signed_rpm $1 $2
 check_result $? "Problem with prmbuild tool. (last section of building of RPM package)"
 
-mv ${WORKING_DIR}/rpmbuild/RPMS/${TARGET}/${targ}-${version}-${release}.${TARGET}.rpm ${CURRENT_DIR}/build/
+mv ${WORKING_DIR}/rpmbuild/RPMS/x86_64/${targ}-${version}-${release}.x86_64.rpm ${CURRENT_DIR}/build/
 check_result $? "Problem with moving RPM package to script file location/build directory)"
 cd -
 rm .rpmmacros
@@ -173,4 +173,3 @@ rm -f  $CURRENT_DIR/rpmbuild/SPECS/*
 rm -f  $CURRENT_DIR/rpmbuild/SOURCES/*
 
 echo "Mission Accomplished"
-
