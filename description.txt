@@ -1,1 +1,10 @@
-$1 პარამეტრით ავღნიშნავ ჩვენთვის სასურებლი სკრიპტის სმეც ფილე სახელს მერეთი ავღნიშნავ არქითეკთურას რომელი გვინდა (დეფაულტად იქნება ex)
+sheqminili maq position parametri 3 cali priveli agnishnavs skriptis saxleli da +.spec shemdegi agnishnavs arqitekuras romelic gvinda da mesame srtuli saxeli skriptis 
+
+viwer yovel jerze repozitorias skriptebis saidanac minda rom wamovigo 
+da inaxeba yovel jerze  droebit fileshi 
+
+spec filis origani martva xdeba gitze  atviruli dan raimis shecval tu ginda vcvlit gitze da skriptis gashvebidan avtomaturad icvleba spec fileshi rac aris sachiro 
+
+problema mqonda .rpmmacros filtan da rpm singtan _gpg_ key stan eg problema mogvagvar magram skriptis gashvebis dros mchirdeba rom sheviyvano xelit secret prazsa da mivutito .rpmmaxroshi vin aris xelis momweri chemi skripti ise gavaketeo rom avtomaturad iwers .rmpmacros romelic moregbuli maq chem garemoze dzvel makros inaxavs da skriptis dasrulebis shemdeg abrunebs dzvel macros romelic iyo gamoyenebuli aqamde, uproblemod aketeb sachiroebis shemtxvvashi advilad sheicvleba magis martvac xdeb git atvirtuli pailidan 
+
+aseve daviwye mushaoba sxva githabidan repozitoriis gadmowerea tu damchirda  da magis morgeba chem skritpshi tu dagcchirdeba egeti ragac shemidzlia gavagrdzelo mushaoba ubralod mosapiqrebeli maq samushao sqema rogor iqneba tu sachiro iqneba shevasruleb 
