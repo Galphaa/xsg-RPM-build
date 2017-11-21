@@ -19,8 +19,8 @@ check_result() {
 build_signed_rpm() {
     SPEC_FILE="$1"
     TARGET="$2"
-    rpmbuild -bb -v --sign --clean  --target ${TARGET} ${WORKING_DIR}/rpmbuild/SPECS/${SPEC_FILE}
-    #rpmbuild -bb -v ${WORKING_DIR}/rpmbuild/SPECS/${SPEC_FILE}
+    #rpmbuild -bb -v --sign --clean  --target ${TARGET} ${WORKING_DIR}/rpmbuild/SPECS/${SPEC_FILE}
+    rpmbuild -bb -v ${WORKING_DIR}/rpmbuild/SPECS/${SPEC_FILE}
     #expect -exact "Enter pass phrase: "
     #send -- "blank\r"
     #expect eof
