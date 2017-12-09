@@ -1,0 +1,2 @@
+yum install rpm-build
+yum install rpmdevtools
