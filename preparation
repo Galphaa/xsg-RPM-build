@@ -1,2 +1,3 @@
 yum install rpm-build
 yum install rpmdevtools
+yum install wget
